@@ -3,7 +3,7 @@ import { DollarOutlined, SwapOutlined } from "@ant-design/icons";
 import { Modal, Input, InputNumber } from "antd";
 
 
-function RequestAndPay({}) {
+function RequestAndPay({ requests, getNameAndBalance }) {
   const [payModal, setPayModal] = useState(false);
   const [requestModal, setRequestModal] = useState(false);
   const [requestAmount, setRequestAmount] = useState(5);
@@ -63,7 +63,9 @@ function RequestAndPay({}) {
         >
           <DollarOutlined style={{ fontSize: "26px" }} />
           Pay
-            <div className="absolute top-[-5px] right-[-5px] bg-red-700 h-25 w-35 rounded-[100px] text-white font-bold flex justify-center items-center">2</div>
+            {requests && requests["0"].length > 0 && (
+            <div className="absolute top-[-5px] right-[-5px] bg-red-700 h-25 w-35 rounded-[100px] text-white font-bold flex justify-center items-center">{requests["0"].length}</div>
+          )}
         </div>
         <div
           className="bg-blue-700 w-full h-20 rounded-lg text-white font-bold flex justify-center items-center flex-col gap-15 relative cursor-pointer"

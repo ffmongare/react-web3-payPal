@@ -4,7 +4,7 @@ import { UserOutlined } from "@ant-design/icons";
 import matic from "../matic.png";
 
 
-function AccountDetails({}) {
+function AccountDetails({ address, name, balance }) {
   
 
   return (
@@ -12,10 +12,10 @@ function AccountDetails({}) {
       <div className="flex justify-start-items-center w-full h-70 ml-25 gap 30 mb-4">
         <UserOutlined style={{ color: "#767676", fontSize: "25px" }} />
         <div>
-          <div className="ml-2 font-bold text-sm text-gray-700"> Frank Mong'are </div>
+          <div className="ml-2 font-bold text-sm text-gray-700"> {name}  </div>
           <div className="ml-2 text-gray-600 text-sm font-semibold">
             {" "}
-            Address: 0x12...3456
+            Address: {address.slice(0, 5)}...{address.slice(38)}
           </div>
         </div>
       </div>
@@ -23,7 +23,7 @@ function AccountDetails({}) {
         <img src={matic} alt="maticLogo" width={25} />
         <div>
           <div className="ml-2 font-bold text-sm text-gray-700"> Native Matic Tokens</div>
-          <div className="ml-2 text-gray-600 text-sm font-semibold">100.32 Matic</div>
+          <div className="ml-2 text-gray-600 text-sm font-semibold">{balance} Matic</div>
         </div>
       </div>
       <div className="mt-8 flex justify-center items-center gap-10">
