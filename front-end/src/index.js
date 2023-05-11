@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { configureChains, mainnet, WagmiConfig, createConfig } from "wagmi";
+import { configureChains, mainnet, WagmiConfig, createClient } from "wagmi";
 import { publicProvider } from "wagmi/providers/public";
 import { polygonMumbai } from '@wagmi/chains';
 
@@ -12,7 +12,7 @@ const { provider, webSocketProvider } = configureChains(
   [publicProvider()]
 );
 
-const config = createConfig({
+const client = createClient({
   autoConnect: true,
   provider,
   webSocketProvider,
@@ -21,7 +21,7 @@ const config = createConfig({
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <WagmiConfig config={config}>
+    <WagmiConfig client={client}>
         <App />
     </WagmiConfig>
   </React.StrictMode>
